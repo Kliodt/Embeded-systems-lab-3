@@ -1,3 +1,5 @@
+#include <string.h>
+
 #include "controller.h"
 #include "handlers.h"
 
@@ -6,20 +8,27 @@ struct HandlerInfo allHandlers[BUTTONS_TOTAL] = {0};
 // ! ------------- this is debug things ------------------
 bool screenMatrix[SCREEN_HEIGHT_PX][SCREEN_WIDTH_PX] = {0};
 void printScreen(void) {
-    for (int i = 0; i < SCREEN_WIDTH_PX * 2 + 2; i++) printf("-");
-    printf("\n");
+    char str[SCREEN_HEIGHT_PX * SCREEN_WIDTH_PX * 8] = {0};
+    int iter = 0;
+    for (int i = 0; i < SCREEN_WIDTH_PX * 2 + 2; i++) str[iter++] = '-';
+    str[iter++] = '\n';
     for (int i = 0; i < SCREEN_HEIGHT_PX; i++) {
-        printf("|");
+        str[iter++] = '|';
         for (int j = 0; j < SCREEN_WIDTH_PX; j++) {
             if (screenMatrix[i][j]) {
-                printf("██");
-            } else
-                printf("  ");
+                memcpy(str + iter, "██", sizeof("██") - 1);
+                iter += sizeof("██") - 1;
+            } else {
+                str[iter++] = ' ';
+                str[iter++] = ' ';
+            }
         }
-        printf("|\n");
+        str[iter++] = '|';
+        str[iter++] = '\n';
     }
-    for (int i = 0; i < SCREEN_WIDTH_PX * 2 + 2; i++) printf("-");
-    printf("\n");
+    for (int i = 0; i < SCREEN_WIDTH_PX * 2 + 2; i++) str[iter++] = '-';
+    str[iter++] = '\n';
+    printf(str);
 }
 // ! -----------------------------------------------------
 
