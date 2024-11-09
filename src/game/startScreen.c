@@ -4,7 +4,10 @@
 void renderStartScreen(struct Game* game) {
     // example code
     clearScreen();
-    drawText(0, 0, "Press the button to change screen");
+    drawLabel(0, 0, "Press the button to change screen");
+    
+    // show changes on screen
+    updateScreen();
 
     // wait until the button will be pressed
     while (1) {

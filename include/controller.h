@@ -41,7 +41,7 @@ bool initController(void);
  * @param y координата Y
  * @param str NULL-terminated строка
  */
-void drawText(int x, int y, char str[]);
+void drawLabel(int x, int y, char str[]);
 
 /**
  * Вывести квадрат
@@ -55,6 +55,11 @@ void drawSquare(int x, int y, int sizePx);
  * Очистить весь экран
  */
 void clearScreen(void);
+
+/**
+ * Обновить изображение на экране
+ */
+void updateScreen(void);
 
 /**
  * Добавить обработчик на нажатие кнопки

@@ -34,7 +34,7 @@ void printScreen(void) {
 
 bool initController(void) { return true; };
 
-void drawText(int x, int y, char str[]) {
+void drawLabel(int x, int y, char str[]) {
     // todo: check screen boundaries
     // ! this is debug code
     printf("debug: text at (%d, %d): %s\n", x, y, str);
@@ -48,7 +48,6 @@ void drawSquare(int x, int y, int sizePx) {
             screenMatrix[i][j] = true;
         }
     }
-    printScreen();
 };
 
 void clearScreen(void) {
@@ -58,8 +57,11 @@ void clearScreen(void) {
             screenMatrix[i][j] = false;
         }
     }
-    printScreen();
 };
+
+void updateScreen(void) {
+    printScreen();
+}
 
 bool setHandler(int buttonCode, struct HandlerInfo handlerConfig) {
     if (buttonCode >= BUTTONS_TOTAL) return false;
