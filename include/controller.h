@@ -52,6 +52,16 @@ void drawLabel(int x, int y, char str[]);
 void drawSquare(int x, int y, int sizePx);
 
 /**
+ * Вывести на экран матрицу из пикселей
+ * @param x координата X
+ * @param y координата Y
+ * @param matrix матрица пикселей (true - пиксел горит, false - пиксел не горит)
+ * @param widthPx ширина в пикселях
+ * @param heightPx высота в пикселях
+ */
+void drawMatrix(bool** matrix, int x, int y, int widthPx, int heightPx);
+
+/**
  * Очистить весь экран
  */
 void clearScreen(void);

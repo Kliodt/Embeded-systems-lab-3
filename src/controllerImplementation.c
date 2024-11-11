@@ -50,6 +50,17 @@ void drawSquare(int x, int y, int sizePx) {
     }
 };
 
+void drawMatrix(bool** matrix, int x, int y, int widthPx, int heightPx) {
+    // ! WARNING: didn't test it, but should work
+    // todo: check screen boundaries
+    // ! this is debug code
+    for (int i = y; i < y + heightPx; i++) {
+        for (int j = x; j < x + widthPx; j++) {
+            screenMatrix[i][j] = matrix[i][j];
+        }
+    }
+}
+
 void clearScreen(void) {
     // ! this is debug code
     for (int i = 0; i < SCREEN_HEIGHT_PX; i++) {
