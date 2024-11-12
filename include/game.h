@@ -3,6 +3,8 @@
 #include "CThreads/cthreads.h"
 #include "controller.h"
 
+struct Game;
+
 struct GameScreen {
     void (*render)(struct Game *);
     // maybe other parameters
