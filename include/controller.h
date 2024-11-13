@@ -6,8 +6,8 @@
 
 #define BUTTONS_TOTAL 12
 
-#define SCREEN_WIDTH_PX 100 // todo: change to real one
-#define SCREEN_HEIGHT_PX 50
+#define SCREEN_WIDTH_PX 70 // todo: change to real one
+#define SCREEN_HEIGHT_PX 70
 
 /**
  * Направление нажатой кнопки

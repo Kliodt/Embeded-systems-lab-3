@@ -2,8 +2,8 @@
 
 #include "CThreads/cthreads.h"
 #include "controller.h"
-#include "snake.h"
 #include "coordinate.h"
+#include "snake.h"
 
 struct Coordinate;
 
@@ -33,8 +33,7 @@ struct Game
   struct cthreads_mutex keyboardLock;
 
   // other necessary game-global fields
-  struct Snake snake; 
-  
+  struct Snake snake;
 };
 
 /**
@@ -52,9 +51,3 @@ void renderEndScreen (struct Game * game);
  */
 void pressTheButton (enum Direction direction);
 
-// Функции, описывающие поведение змейки.
-void init_snake (struct Snake * snake, struct Coordinate init_coord, enum Direction init_direction);
-int set_snake_direction (struct Snake * snake, enum Direction new_dir);
-void draw_snake_segment (struct SnakeSegment * segment);
-void draw_snake (struct Snake * snake);
-void move_snake (struct Snake * snake);

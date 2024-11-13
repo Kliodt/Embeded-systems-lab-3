@@ -7,5 +7,4 @@
 struct SnakeSegment
 {
   struct Coordinate coordinate;
-  
 };
