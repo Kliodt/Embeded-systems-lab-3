@@ -61,50 +61,39 @@ move_snake (struct Snake * snake)
   switch (snake->direction)
     {
     case DIR_UP:
-      if (snake->body[0].coordinate.y < 0)
-        {
-          snake->body[0].coordinate.y = SCREEN_HEIGHT_PX - SNAKE_SEGMENT_SIZE;
-        }
-      else
-        {
-          snake->body[0].coordinate.y -= SNAKE_SEGMENT_SIZE;
-        }
+      snake->body[0].coordinate.y -= SNAKE_SEGMENT_SIZE;
       break;
     case DIR_DOWN:
-      if (snake->body[0].coordinate.y >= SCREEN_HEIGHT_PX)
-        {
-          snake->body[0].coordinate.y = SCREEN_HEIGHT_PX - SNAKE_SEGMENT_SIZE;
-        }
-      else
-        {
-          snake->body[0].coordinate.y += SNAKE_SEGMENT_SIZE;
-        }
-      // snake->body[0].coordinate.y += SNAKE_SEGMENT_SIZE;
+      snake->body[0].coordinate.y += SNAKE_SEGMENT_SIZE;
       break;
     case DIR_LEFT:
-      if (snake->body[0].coordinate.x < 0)
-        {
-          snake->body[0].coordinate.x = SCREEN_WIDTH_PX - SNAKE_SEGMENT_SIZE;
-        }
-      else
-        {
-          snake->body[0].coordinate.x -= SNAKE_SEGMENT_SIZE;
-        }
-      // snake->body[0].coordinate.x -= SNAKE_SEGMENT_SIZE;
+      snake->body[0].coordinate.x -= SNAKE_SEGMENT_SIZE;
       break;
     case DIR_RIGHT:
-      if (snake->body[0].coordinate.x >= SCREEN_WIDTH_PX)
-        {
-          snake->body[0].coordinate.x = 0;
-        }
-      else
-        {
-          snake->body[0].coordinate.x += SNAKE_SEGMENT_SIZE;
-        }
-      // snake->body[0].coordinate.x += SNAKE_SEGMENT_SIZE;
+      snake->body[0].coordinate.x += SNAKE_SEGMENT_SIZE;
       break;
     default:
       break;
+    }
+
+  // Проверка на выход за вертикальные границы экрана и телепортация
+  if (snake->body[0].coordinate.y < 0)
+    {
+      snake->body[0].coordinate.y = SCREEN_HEIGHT_PX - SNAKE_SEGMENT_SIZE;
+    }
+  else if (snake->body[0].coordinate.y >= SCREEN_HEIGHT_PX)
+    {
+      snake->body[0].coordinate.y = 0;
+    }
+
+  // Проверка на выход за горизонтальные границы экрана и телепортация
+  if (snake->body[0].coordinate.x < 0)
+    {
+      snake->body[0].coordinate.x = SCREEN_WIDTH_PX - SNAKE_SEGMENT_SIZE;
+    }
+  else if (snake->body[0].coordinate.x >= SCREEN_WIDTH_PX)
+    {
+      snake->body[0].coordinate.x = 0;
     }
 
   // Проверка на выход за границы по вертикали и телепортация
@@ -145,4 +134,18 @@ snake_grow (struct Snake * snake)
       // Увеличиваем текущую длину змейки
       snake->length_current++;
     }
+}
+
+int
+is_snake_dead (struct Snake * snake)
+{
+  for (int i = 1; i < snake->length_current; i++)
+    {
+      if (snake->body[0].coordinate.x == snake->body[i].coordinate.x
+          && snake->body[0].coordinate.y == snake->body[i].coordinate.y)
+        {
+          return 1;
+        }
+    }
+    return 0;
 }

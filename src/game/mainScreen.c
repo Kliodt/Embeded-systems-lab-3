@@ -7,7 +7,6 @@
 
 #include <unistd.h>
 
-
 void
 render_main_screen (struct Game * game)
 {
@@ -48,23 +47,20 @@ render_main_screen (struct Game * game)
 
       clearScreen (); // Очищаем экран для перерисовки
       draw_snake (&game->snake); // Отрисовываем змейку
+
+      if (is_snake_dead (&game->snake))
+        {
+          game->is_snake_dead = 1;
+          game->currentScreen = &game->endScreen;
+          return;
+        }
+
       draw_berry (&berry);
+
       updateScreen (); // Обновляем изображение на экране
 
       // Задержка для управления скоростью змейки
       usleep (200 * 1000);
-
-      // game->keyboardEvent.buttonWasPressed = false; // reset the flag
-      // enum Direction direction = game->keyboardEvent.direction;
-      // cthreads_mutex_unlock (&game->keyboardLock);
-
-      // // draw square test
-      // drawSquare (0, 0, 5);
-      // drawSquare (5, 5, 10);
-      // drawSquare (15, 15, 20);
-      // // show changes on screen
-      // updateScreen ();
-      // for (;;)
-      //   ;
     }
+  return;
 }

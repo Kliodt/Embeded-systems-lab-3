@@ -1,13 +1,13 @@
 #pragma once
 
+#include "directions.h"
 #include <stdbool.h>
 #include <stdio.h>
-#include "directions.h"
 
 #define BUTTONS_TOTAL 12
 
-#define SCREEN_WIDTH_PX 70 // todo: change to real one
-#define SCREEN_HEIGHT_PX 70
+#define SCREEN_WIDTH_PX 100 // todo: change to real one
+#define SCREEN_HEIGHT_PX 100
 
 /**
  * Направление нажатой кнопки

@@ -24,3 +24,5 @@ void draw_snake_segment (struct SnakeSegment * segment);
 void draw_snake (struct Snake * snake);
 void move_snake (struct Snake * snake);
 void snake_grow (struct Snake * snake);
+int is_snake_dead (struct Snake * snake);
+

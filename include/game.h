@@ -34,6 +34,8 @@ struct Game
 
   // other necessary game-global fields
   struct Snake snake;
+  bool is_snake_dead;
+  
 };
 
 /**
@@ -50,4 +52,3 @@ void renderEndScreen (struct Game * game);
  * @param direction
  */
 void pressTheButton (enum Direction direction);
-
