@@ -11,10 +11,10 @@ struct Game game;
 
 void pressTheButton(enum Direction direction) {
     // cthreads_mutex_lock(&game.keyboardLock);
-    osMutexWait(&game.keyboardLock, osWaitForever);
+    osMutexWait(game.keyboardLock, osWaitForever);
     game.keyboardEvent.buttonWasPressed = true;
     game.keyboardEvent.direction = direction;
-    osMutexRelease(&game.keyboardLock);
+    osMutexRelease(game.keyboardLock);
     // cthreads_mutex_unlock(&game.keyboardLock);
 }
 

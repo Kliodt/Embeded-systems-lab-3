@@ -2,6 +2,8 @@
     "files.associations": {
         "game.h": "c",
         "freertos.h": "c",
-        "cmsis_os.h": "c"
+        "cmsis_os.h": "c",
+        "string.h": "c",
+        "usart.h": "c"
     }
 }

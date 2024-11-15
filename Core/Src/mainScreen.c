@@ -17,14 +17,14 @@ void renderMainScreen(struct Game* game) {
     {
       // Проверка нажатия кнопки
     //   cthreads_mutex_lock (&game->keyboardLock); // лок
-      osMutexWait(&game->keyboardLock, osWaitForever);
+      osMutexWait(game->keyboardLock, osWaitForever);
       if (game->keyboardEvent.buttonWasPressed)
         {
           game->keyboardEvent.buttonWasPressed = false; // Сбрасываем флаг
           set_snake_direction (&game->snake, game->keyboardEvent.direction);
         }
     //   cthreads_mutex_unlock (&game->keyboardLock); // анлок
-      osMutexRelease(&game->keyboardLock);
+      osMutexRelease(game->keyboardLock);
 
       if (!berry_is_placed)
         {
@@ -50,4 +50,5 @@ void renderMainScreen(struct Game* game) {
       // Задержка для управления скоростью змейки
     //   usleep (200 * 1000);
     osDelay(200);
+  }
 }

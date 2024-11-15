@@ -11,22 +11,22 @@ void renderStartScreen(struct Game* game) {
     // wait until the button will be pressed
     while (1) {
         // cthreads_mutex_lock(&game->keyboardLock);
-        osMutexWait(&game->keyboardLock, osWaitForever);
+        osMutexWait(game->keyboardLock, osWaitForever);
         if (game->keyboardEvent.buttonWasPressed) {
             // cthreads_mutex_unlock(&game->keyboardLock);
-            osMutexRelease(&game->keyboardLock);
+            osMutexRelease(game->keyboardLock);
             break;
         }
         // cthreads_mutex_unlock(&game->keyboardLock);
-        osMutexRelease(&game->keyboardLock);
+        osMutexRelease(game->keyboardLock);
         osDelay(10);
     }
     // cthreads_mutex_lock(&game->keyboardLock);
-    osMutexWait(&game->keyboardLock, osWaitForever);
+    osMutexWait(game->keyboardLock, osWaitForever);
     game->keyboardEvent.buttonWasPressed = false;  // reset the flag
     enum Direction direction = game->keyboardEvent.direction;
     // cthreads_mutex_unlock(&game->keyboardLock);
-    osMutexRelease(&game->keyboardLock);
+    osMutexRelease(game->keyboardLock);
 
     // set next screen according to the pressed button
     // then return so that new screen would be rendered
