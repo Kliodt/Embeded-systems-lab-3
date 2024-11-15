@@ -55,7 +55,7 @@
 #include "cmsis_os.h"
 
 /* Private includes ----------------------------------------------------------*/
-/* USER CODE BEGIN Includes */     
+/* USER CODE BEGIN Includes */
 #include "usart.h"
 #include <string.h>
 
@@ -84,7 +84,7 @@
 
 /* USER CODE END Variables */
 osThreadId Task_LED1Handle;
-// osThreadId Task_UARTHandle;
+osThreadId Task_UARTHandle;
 osThreadId Task_LED2Handle;
 osMessageQId myQueue01Handle;
 
@@ -94,7 +94,7 @@ osMessageQId myQueue01Handle;
 /* USER CODE END FunctionPrototypes */
 
 void StartTaskLED1(void const * argument);
-// void StartTaskUART(void const * argument);
+void StartTaskUART(void const * argument);
 void StartTasLED2(void const * argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
@@ -169,8 +169,8 @@ void MX_FREERTOS_Init(void) {
   Task_LED1Handle = osThreadCreate(osThread(Task_LED1), NULL);
 
   /* definition and creation of Task_UART */
-  // osThreadDef(Task_UART, StartTaskUART, osPriorityNormal, 0, 128);
-  // Task_UARTHandle = osThreadCreate(osThread(Task_UART), NULL);
+  osThreadDef(Task_UART, StartTaskUART, osPriorityNormal, 0, 128);
+  Task_UARTHandle = osThreadCreate(osThread(Task_UART), NULL);
 
   /* definition and creation of Task_LED2 */
   osThreadDef(Task_LED2, StartTasLED2, osPriorityNormal, 0, 128);
@@ -218,9 +218,9 @@ void StartTaskLED1(void const * argument)
 * @retval None
 */
 /* USER CODE END Header_StartTaskUART */
-// void StartTaskUART(void const * argument)
-// {
-//   /* USER CODE BEGIN StartTaskUART */
+void StartTaskUART(void const * argument)
+{
+  /* USER CODE BEGIN StartTaskUART */
 //   /* Infinite loop */
 // 	osEvent event;
 // 	char *state;
@@ -233,8 +233,8 @@ void StartTaskLED1(void const * argument)
 // 		}
 // 		osDelay(1);
 // 	  }
-//   /* USER CODE END StartTaskUART */
-// }
+  /* USER CODE END StartTaskUART */
+}
 
 /* USER CODE BEGIN Header_StartTasLED2 */
 /**
@@ -260,5 +260,3 @@ void StartTasLED2(void const * argument)
 /* USER CODE BEGIN Application */
 
 /* USER CODE END Application */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
