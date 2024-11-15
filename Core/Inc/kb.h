@@ -6,7 +6,7 @@
 #define ROW3 0xFB
 #define ROW4 0xF7
 
-uint8_t Check_Ro9w (uint8_t Nrow);
+uint8_t Check_Row (uint8_t Nrow);
 HAL_StatusTypeDef Set_Keyboard (void);
 
 #endif /* INC_KEYBOARD_H_ */

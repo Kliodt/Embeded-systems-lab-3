@@ -1,6 +1,7 @@
 #pragma once
 
 #include <stdbool.h>
+#include "directions.h"
 // #include <stdio.h>
 
 #define BUTTONS_TOTAL 12
@@ -11,7 +12,7 @@
 /**
  * Направление нажатой кнопки
  */
-enum Direction { DIR_LEFT, DIR_RIGHT, DIR_UP, DIR_DOWN, DIR_CENTER };
+// enum Direction { DIR_LEFT, DIR_RIGHT, DIR_UP, DIR_DOWN, DIR_CENTER };
 
 /**
  * Параметры функции-обработчика

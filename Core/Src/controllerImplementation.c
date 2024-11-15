@@ -20,17 +20,17 @@ void drawLabel(int x, int y, char str[]) {
     // todo: check screen boundaries
     // oled_Reset();
     FontDef defaultFont = Font_7x10;
-    u_int8_t maxSymbolsWidth = (OLED_WIDTH - x) / defaultFont.FontWidth;
-    u_int8_t maxSymbolsHeight = (OLED_HEIGHT - y) / defaultFont.FontHeight;
-    u_int8_t strLen = 0;
+    uint8_t maxSymbolsWidth = (OLED_WIDTH - x) / defaultFont.FontWidth;
+    uint8_t maxSymbolsHeight = (OLED_HEIGHT - y) / defaultFont.FontHeight;
+    uint8_t strLen = 0;
     while(str[strLen] != 0) {
         strLen++;
     }
-    u_int16_t maxSymbolsCount = maxSymbolsWidth * maxSymbolsHeight;
+    uint16_t maxSymbolsCount = maxSymbolsWidth * maxSymbolsHeight;
     if (maxSymbolsCount > 0 && strLen <= maxSymbolsCount) {
         oled_SetCursor(x, y);
-        u_int8_t fullSubstringCount = strLen / maxSymbolsWidth;
-        u_int8_t lastSubstringLen = strLen % maxSymbolsWidth;
+        uint8_t fullSubstringCount = strLen / maxSymbolsWidth;
+        uint8_t lastSubstringLen = strLen % maxSymbolsWidth;
         for (int i = 0; i < fullSubstringCount; i++) {
             oled_SetCursor(x, y + i * 2 * maxSymbolsHeight);
             char substring[maxSymbolsWidth + 1];
@@ -97,8 +97,7 @@ void KB_Test(void) {
     // OLED_KB(OLED_Keys);
     // oled_UpdateScreen();
     while (1) {
-        int row_number = 0;
-        for (row_number; row_number < 4; row_number++) {
+        for (int row_number = 0; row_number < 4; row_number++) {
             Key = Check_Row(Row[row_number]);
             if (Key == 0x04) {
                 tryCallHandler(3 * row_number);
